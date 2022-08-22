@@ -53,6 +53,14 @@ export const CalculadoraScreen = () => {
     }
   }
 
+  const btnDelete = () => {
+    if ((numero.includes('-') && (numero.length == 2)) || (numero.length == 1)) {
+      setNumero('0');
+    } else {
+      setNumero(numero.substring(0, numero.length -1));
+    }
+  }
+
   return (
     <View style={ styles.calcContainer }>
       <Text style={ styles.resultadoPequeno }>{ numeroAnterior }</Text>
@@ -68,7 +76,7 @@ export const CalculadoraScreen = () => {
       <View style={ styles.fila }>
         <BotonCalc texto='C' color='#9B9B9B' action={ limpiar } />
         <BotonCalc texto='+/-' color='#9B9B9B' action={ invertirSigno } />
-        <BotonCalc texto='del' color='#9B9B9B' action={ limpiar } />
+        <BotonCalc texto='del' color='#9B9B9B' action={ btnDelete } />
         <BotonCalc texto='/' color='#FF9427' action={ limpiar } />
       </View>
 
